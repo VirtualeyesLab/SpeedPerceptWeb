@@ -33,7 +33,7 @@
         streamingAssetsUrl: "StreamingAssets",
         companyName: "VirtualEyes",
         productName: "SpeedPercept",
-        productVersion: "0.1",
+        productVersion: "1.0",
       };
 
       const container = document.querySelector("#unity-container");
@@ -63,6 +63,7 @@
         container.className = "unity-mobile";
         config.devicePixelRatio = 1;
       }
+      canvas.style.background = "url('" + buildUrl + "/SpeedPerceptWeb.jpg') center / cover";
       loadingCover.style.display = "";
 
       const script = document.createElement("script");
