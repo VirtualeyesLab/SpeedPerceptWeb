@@ -89,5 +89,47 @@
       };
       document.body.appendChild(script);
     </script>
+    <script>
+      mergeInto(LibraryManager.library, {
+        UNITY_SAVE: function(content, name, MIMEType) {
+          content = UTF8ToString(content);
+          name = UTF8ToString(name);
+          MIMEType = UTF8ToString(MIMEType);
+          var blob = new Blob([content], {type: MIMEType});
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = name;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        },
+      
+        UNITY_SAVE_BYTEARRAY: function(array, byteLength, name, MIMEType) {
+          var bytes = new Uint8Array(Module.HEAPU8.buffer, array, byteLength);
+          var blob = new Blob([bytes], {type: MIMEType});
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = name;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        },
+      
+        UNITY_IS_SUPPORTED: function() {
+          // Assuming file saving is supported on all browsers
+          return true;
+        },
+      
+        init: function() {
+          // Initialization code if needed
+          console.log("Custom JS library initialized for WebGL.");
+        }
+      });
+      </script>
+      
   </body>
 </html>
