@@ -108,6 +108,8 @@
       
         UNITY_SAVE_BYTEARRAY: function(array, byteLength, name, MIMEType) {
           var bytes = new Uint8Array(Module.HEAPU8.buffer, array, byteLength);
+          name = UTF8ToString(name);
+          MIMEType = UTF8ToString(MIMEType);
           var blob = new Blob([bytes], {type: MIMEType});
           var url = URL.createObjectURL(blob);
           var a = document.createElement('a');
@@ -130,6 +132,7 @@
         }
       });
       </script>
+      
       
   </body>
 </html>
