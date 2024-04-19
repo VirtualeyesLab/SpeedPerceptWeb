@@ -89,5 +89,24 @@
       };
       document.body.appendChild(script);
     </script>
+    <script>
+      mergeInto(LibraryManager.library, {
+        DownloadFile: function(content, filename) {
+          var contentStr = UTF8ToString(content);
+          var filenameStr = UTF8ToString(filename);
+          var blob = new Blob([contentStr], {type: 'text/csv;charset=utf-8;'});
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = filenameStr;
+          a.style.display = 'none';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        }
+      });
+      </script>
+      
   </body>
 </html>
