@@ -25,11 +25,11 @@
     <script>
       const hideFullScreenButton = "true";
       const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/New folder.loader.js";
+      const loaderUrl = buildUrl + "/SpeedPerceptWeb.loader.js";
       const config = {
-        dataUrl: buildUrl + "/New folder.data",
-        frameworkUrl: buildUrl + "/New folder.framework.js",
-        codeUrl: buildUrl + "/New folder.wasm",
+        dataUrl: buildUrl + "/SpeedPerceptWeb.data",
+        frameworkUrl: buildUrl + "/SpeedPerceptWeb.framework.js",
+        codeUrl: buildUrl + "/SpeedPerceptWeb.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Virtualeyes Lab",
         productName: "SpeedPercept",
@@ -63,7 +63,7 @@
         container.className = "unity-mobile";
         config.devicePixelRatio = 1;
       }
-      canvas.style.background = "url('" + buildUrl + "/New folder.jpg') center / cover";
+      canvas.style.background = "url('" + buildUrl + "/SpeedPerceptWeb.jpg') center / cover";
       loadingCover.style.display = "";
 
       const script = document.createElement("script");
